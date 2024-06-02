@@ -2,6 +2,7 @@ $lightGreen : #b9e7e7;
 $teal : teal;
 $white : white;
 $gray : lightgray;
+$darkgray : #333;
 $black : black;
 $red : red;
 
@@ -209,19 +210,53 @@ $red : red;
 
             .content {
                 flex: 5;
+                display: flex;
+                flex-direction: column;
+                gap: 1.875rem;
 
                 img {
                     width: 100%;
                     height: 18.75rem;
+                    object-fit: cover;
                 }
 
                 .user {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.625rem;
+                    font-size: 0.875rem;
+
                     img {
                         width: 3.125rem;
                         height: 3.125rem;
                         border-radius: 50%;
                         object-fit: cover;
                     }
+
+                    span {
+                        font-weight: bold;
+                    }
+                }
+
+                .edit {
+                    display: flex;
+                    gap: 0.375rem;
+
+                    img {
+                        width: 1.25rem;
+                        height: 1.25rem;
+                        cursor: pointer;
+                    }
+                }
+
+                h1 {
+                    font-size: 2.625rem;
+                    color: $darkgray;
+                }
+
+                p {
+                    text-align: justify;
+                    line-height: 1.875rem;
                 }
             }
 
