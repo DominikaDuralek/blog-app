@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Menu from "../components/Menu";
 import Edit from '../img/edit.png';
 import Delete from '../img/delete.png';
 
