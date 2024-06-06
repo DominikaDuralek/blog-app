@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Register() {
@@ -9,6 +9,11 @@ function Register() {
     email: "",
     password: "",
   })
+
+  // Errors
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   // Detect changes in the inputs
   const handleChange = e => {
@@ -19,13 +24,11 @@ function Register() {
     // Prevent default after refreshing the page
     e.preventDefault();
 
-    console.log("ok");
-
     try {
-      const res = await axios.post("/api/auth/register", inputs);
-      console.log(res);
+      await axios.post("/api/auth/register", inputs);
+      navigate("/login");
     } catch (error) {
-      console.log(error);
+      setError(error.response.data);
     }
   }
 
@@ -37,7 +40,7 @@ function Register() {
         <input required type="text" placeholder="email" name='email' onChange={handleChange} />
         <input required type="password" placeholder="password" name='password' onChange={handleChange} />
         <button onClick={handleSubmit}>Register</button>
-        <p>This is an error!</p>
+        {error && <p>{error}</p>}
         <span>Do you have an account? <Link to="/login">Login</Link></span>
       </form>
     </div>
