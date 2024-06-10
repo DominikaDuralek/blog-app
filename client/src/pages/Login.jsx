@@ -16,8 +16,7 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
+  const { login } = useContext(AuthContext);
 
   // Detect changes in the inputs
   const handleChange = e => {
@@ -29,7 +28,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      await axios.post("/api/auth/login", inputs);
+      await login(inputs);
       navigate("/");
     } catch (error) {
       setError(error.response.data);

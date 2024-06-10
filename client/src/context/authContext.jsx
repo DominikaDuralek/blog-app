@@ -17,7 +17,7 @@ export const AuthContextProvider = ({ children }) => {
 
     // After logout, set data in localstorage to null
     const logout = async (inputs) => {
-        const res = await axios.post("/api/auth/logout", inputs);
+        await axios.post("/api/auth/logout");
         setCurrentUser(null);
     };
 
